@@ -16,12 +16,15 @@ const Data = () =>{
          id: Date.now(),
          name: input
       }])
-      console.log(tasks)
+   }
+
+   const deleteTask = (id) =>{
+      console.log(id)
    }
 
    return <>
             <AddTask capturingInput={capturingInput} addInputTask={addInputTask}/>
-            <ShowTask dataTasks={tasks}/>
+            <ShowTask dataTasks={tasks} deleteTask={deleteTask}/>
          </>
 }
 
