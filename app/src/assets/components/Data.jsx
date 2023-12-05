@@ -1,5 +1,6 @@
 import { useState } from "react"
 import AddTask from "./AddTask"
+import ShowTask from "./ShowTask"
 
 const Data = () =>{
 
@@ -20,6 +21,7 @@ const Data = () =>{
 
    return <>
             <AddTask capturingInput={capturingInput} addInputTask={addInputTask}/>
+            <ShowTask/>
          </>
 }
 
