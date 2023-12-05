@@ -1,13 +1,17 @@
+import { useState } from "react"
 import AddTask from "./AddTask"
 
 const Data = () =>{
 
+   const [input, setInput] = useState('')
+   const [tasks, setTasks] = useState([])
+
    const capturingInput = (e) =>{
-      console.log(e.target.value)
+      setInput(e.target.value)
    }
    
    const addInputTask = () =>{
-      console.log('clic')
+      console.log(input)
    }
 
    return <>
