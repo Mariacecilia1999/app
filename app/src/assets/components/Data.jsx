@@ -43,9 +43,15 @@ const Data = () =>{
       setTasks(allTask)
    }
 
+   const completeTask = (id) =>{
+      const findComplete = tasks.find(task => task.id === id)
+      const filterTasks = tasks.filter(task => task != findComplete)
+      console.log(filterTasks)
+   }
+
    return <>
             <AddTask capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
-            <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask}/>
+            <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
          </>
 }
 
