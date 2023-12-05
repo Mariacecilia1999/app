@@ -9,6 +9,7 @@ const Data = () =>{
    const [tasks, setTasks] = useState([])
    const [edit, setEdit] = useState([])
    const [allDeleted, setAddDeleted]= useState([])
+   const [allCompleted, setAllCompleted] = useState([])
 
    const capturingInput = (e) =>{
       setInput(e.target.value)
@@ -50,15 +51,14 @@ const Data = () =>{
 
    const completeTask = (id) =>{
       const findComplete = tasks.find(task => task.id === id)
+      setAllCompleted([...allCompleted, findComplete])
       const filterTasks = tasks.filter(task => task != findComplete)
       setTasks(filterTasks)
    }
 
    const showBy = (e) =>{
       console.log(e.target.value)
-      if(e.target.value === 'deleted'){
-         setTasks(allDeleted)
-      }
+      {e.target.value === 'deleted' ? setTasks(allDeleted) :  e.target.value ===  'completed' ? setTasks(allCompleted) : setTasks([...allDeleted, ...allCompleted])}
    }
 
    return <>
