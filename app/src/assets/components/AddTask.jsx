@@ -1,7 +1,7 @@
-const AddTask = () =>{
+const AddTask = ({capturingInput}) =>{
    return(
       <>
-         <input type="text" />
+         <input type="text" onChange={capturingInput} />
          <button>Agregar</button>
       </>
    )
