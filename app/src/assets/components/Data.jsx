@@ -30,8 +30,12 @@ const Data = () =>{
       setInput(findEdit.name)
    }
 
+   const confirmEditedTask = () =>{
+      console.log('confirm')
+   }
+
    return <>
-            <AddTask capturingInput={capturingInput} addInputTask={addInputTask} input={input}/>
+            <AddTask capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
             <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask}/>
          </>
 }
