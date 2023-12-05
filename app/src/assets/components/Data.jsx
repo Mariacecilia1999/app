@@ -19,7 +19,8 @@ const Data = () =>{
    }
 
    const deleteTask = (id) =>{
-      console.log(id)
+      const findDeletedTask = tasks.find(task => task.id === id)
+      console.log(findDeletedTask)
    }
 
    return <>
