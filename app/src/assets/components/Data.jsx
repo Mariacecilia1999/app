@@ -12,7 +12,7 @@ const Data = () =>{
    }
    
    const addInputTask = () =>{
-      setTasks([...tasks, {
+      input != '' && setTasks([...tasks, {
          id: Date.now(),
          name: input
       }])
