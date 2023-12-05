@@ -6,6 +6,7 @@ const Data = () =>{
 
    const [input, setInput] = useState('')
    const [tasks, setTasks] = useState([])
+   const [edit, setEdit] = useState([])
 
    const capturingInput = (e) =>{
       setInput(e.target.value)
@@ -26,12 +27,20 @@ const Data = () =>{
 
    const editTask = (id) =>{
       const findEdit = tasks.find(task => task.id === id)
+      setEdit(findEdit)
       console.log(findEdit.name)
       setInput(findEdit.name)
    }
 
    const confirmEditedTask = () =>{
-      console.log('confirm')
+      console.log(edit)
+      const allTask = tasks.map((task) =>{
+         if(task === edit){
+           return {id: edit.id, name : input}
+         }
+         return task
+      })
+      setTasks(allTask)
    }
 
    return <>
