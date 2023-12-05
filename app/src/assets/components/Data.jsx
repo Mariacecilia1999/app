@@ -25,11 +25,13 @@ const Data = () =>{
    }
 
    const editTask = (id) =>{
-      console.log(id)
+      const findEdit = tasks.find(task => task.id === id)
+      console.log(findEdit.name)
+      setInput(findEdit.name)
    }
 
    return <>
-            <AddTask capturingInput={capturingInput} addInputTask={addInputTask}/>
+            <AddTask capturingInput={capturingInput} addInputTask={addInputTask} input={input}/>
             <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask}/>
          </>
 }
