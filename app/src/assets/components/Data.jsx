@@ -5,10 +5,13 @@ const Data = () =>{
    const capturingInput = (e) =>{
       console.log(e.target.value)
    }
-
+   
+   const addInputTask = () =>{
+      console.log('clic')
+   }
 
    return <>
-            <AddTask capturingInput={capturingInput}/>
+            <AddTask capturingInput={capturingInput} addInputTask={addInputTask}/>
          </>
 }
 
