@@ -20,7 +20,8 @@ const Data = () =>{
 
    const deleteTask = (id) =>{
       const findDeletedTask = tasks.find(task => task.id === id)
-      console.log(findDeletedTask)
+      const filterTask = tasks.filter(task => task != findDeletedTask)
+      setTasks(filterTask)
    }
 
    return <>
