@@ -1,7 +1,9 @@
-const ShowTask = () =>{
+const ShowTask = ({dataTasks}) =>{
    return(
       <>
-      <h3>A</h3>
+      {dataTasks.map((task) =>{
+         console.log(task.name)
+      })}
       </>
    )
 }

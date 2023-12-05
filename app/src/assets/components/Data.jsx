@@ -21,7 +21,7 @@ const Data = () =>{
 
    return <>
             <AddTask capturingInput={capturingInput} addInputTask={addInputTask}/>
-            <ShowTask/>
+            <ShowTask dataTasks={tasks}/>
          </>
 }
 
