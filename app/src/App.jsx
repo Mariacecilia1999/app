@@ -1,7 +1,9 @@
+import Data from "./assets/components/Data"
+
 const App = () =>{
   return <>
-          <h3>a</h3>
-        </>
+  <Data/>
+  </>
 }
 
 export default App
