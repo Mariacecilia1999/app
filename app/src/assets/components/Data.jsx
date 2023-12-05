@@ -56,6 +56,9 @@ const Data = () =>{
 
    const showBy = (e) =>{
       console.log(e.target.value)
+      if(e.target.value === 'deleted'){
+         setTasks(allDeleted)
+      }
    }
 
    return <>
