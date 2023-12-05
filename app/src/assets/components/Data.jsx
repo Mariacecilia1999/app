@@ -46,7 +46,7 @@ const Data = () =>{
    const completeTask = (id) =>{
       const findComplete = tasks.find(task => task.id === id)
       const filterTasks = tasks.filter(task => task != findComplete)
-      console.log(filterTasks)
+      setTasks(filterTasks)
    }
 
    return <>
