@@ -11,7 +11,11 @@ const Data = () =>{
    }
    
    const addInputTask = () =>{
-      console.log(input)
+      setTasks([...tasks, {
+         id: Date.now(),
+         name: input
+      }])
+      console.log(tasks)
    }
 
    return <>
