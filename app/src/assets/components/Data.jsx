@@ -1,6 +1,7 @@
 import { useState } from "react"
 import AddTask from "./AddTask"
 import ShowTask from "./ShowTask"
+import ShowBy from "./ShowBy"
 
 const Data = () =>{
 
@@ -49,7 +50,12 @@ const Data = () =>{
       setTasks(filterTasks)
    }
 
+   const showBy = () =>{
+
+   }
+
    return <>
+            <ShowBy/>
             <AddTask capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
             <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
          </>
