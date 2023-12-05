@@ -24,9 +24,13 @@ const Data = () =>{
       setTasks(filterTask)
    }
 
+   const editTask = (id) =>{
+      console.log(id)
+   }
+
    return <>
             <AddTask capturingInput={capturingInput} addInputTask={addInputTask}/>
-            <ShowTask dataTasks={tasks} deleteTask={deleteTask}/>
+            <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask}/>
          </>
 }
 
