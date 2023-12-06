@@ -14,12 +14,14 @@ const Data = () =>{
    const [select, setSelect] = useState('all')
    const [error, setError] = useState(false)
    const [textHelper, setHelper] = useState('')
+   const [btn, setBtn] = useState(1)
 
    const capturingInput = (e) =>{
       setInput(e.target.value)
    }
    
    const addInputTask = () =>{
+      setBtn(1)
       if(input === ''){
          setError(true)
          setHelper('No se pueden agregar tareas vacias')
@@ -44,6 +46,7 @@ const Data = () =>{
    }
 
    const editTask = (id) =>{
+      setBtn(2)
       const findEdit = tasks.find(task => task.id === id)
       setEdit(findEdit)
       console.log(findEdit.name)
@@ -51,6 +54,7 @@ const Data = () =>{
    }
 
    const confirmEditedTask = () =>{
+      setBtn(1)
       console.log(edit)
       const allTask = tasks.map((task) =>{
          if(task === edit){
@@ -87,7 +91,7 @@ const Data = () =>{
    return <>
             <Box sx={{width:{xs:'90vw', sm:'75vw'}, flexDirection:{xs:'column', sm:'row'}, alignItems:{xs:'end', sm:'center'}}} display='flex'>
                <ShowBy select={select} showBy={showBy}/>
-               <AddTask error={error} textHelper={textHelper} capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
+               <AddTask error={error} textHelper={textHelper} btn={btn} capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
             </Box>
             <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
          </>
