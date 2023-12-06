@@ -1,10 +1,16 @@
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+
+
 const ShowBy = ({showBy}) =>{
    return <>
-            <select onChange={showBy}>
-               <option value="all">Todas</option>
-               <option value="completed">Completadas</option>
-               <option value="deleted">Eliminadas</option>
-            </select>
+    
+       
+            <Select onChange={showBy}>
+               <MenuItem value="all">Todas</MenuItem>
+               <MenuItem value="completed">Completadas</MenuItem>
+               <MenuItem value="deleted">Eliminadas</MenuItem>
+            </Select>
          </>
 }
 
