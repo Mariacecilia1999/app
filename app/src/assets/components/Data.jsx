@@ -2,6 +2,7 @@ import { useState } from "react"
 import AddTask from "./AddTask"
 import ShowTask from "./ShowTask"
 import ShowBy from "./ShowBy"
+import {Box} from '@mui/material';
 
 const Data = () =>{
 
@@ -10,12 +11,23 @@ const Data = () =>{
    const [edit, setEdit] = useState([])
    const [allDeleted, setAddDeleted]= useState([])
    const [allCompleted, setAllCompleted] = useState([])
+   const [select, setSelect] = useState('all')
+   const [error, setError] = useState(false)
+   const [textHelper, setHelper] = useState('')
 
    const capturingInput = (e) =>{
       setInput(e.target.value)
    }
    
    const addInputTask = () =>{
+      if(input === ''){
+         setError(true)
+         setHelper('No se pueden agregar tareas vacias')
+      }else{
+         setError(false)
+         setHelper('')
+
+      }
       input != '' && setTasks([...tasks, {
          id: Date.now(),
          name: input
@@ -56,14 +68,27 @@ const Data = () =>{
       setTasks(filterTasks)
    }
 
-   const showBy = (e) =>{
-      console.log(e.target.value)
-      {e.target.value === 'deleted' ? setTasks(allDeleted) :  e.target.value ===  'completed' ? setTasks(allCompleted) : setTasks([...allDeleted, ...allCompleted])}
-   }
+   const showBy = (e) => {
+      console.log(e.target.value);
+    
+      if (e.target.value === 'deleted') {
+        setSelect('deleted');
+        setTasks(allDeleted);
+      } else if (e.target.value === 'completed') {
+        setSelect('completed');
+        setTasks(allCompleted);
+      } else {
+        setSelect('all');
+        setTasks([...allDeleted, ...allCompleted]);
+      }
+    };
+    
 
    return <>
-            <ShowBy showBy={showBy}/>
-            <AddTask capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
+            <Box sx={{width:{xs:'90vw', sm:'75vw'}, flexDirection:{xs:'column', sm:'row'}, alignItems:{xs:'end', sm:'center'}}} display='flex'>
+               <ShowBy select={select} showBy={showBy}/>
+               <AddTask error={error} textHelper={textHelper} capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
+            </Box>
             <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
          </>
 }
