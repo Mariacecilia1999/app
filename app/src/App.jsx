@@ -1,11 +1,15 @@
 import Data from "./assets/components/Data"
 import {Box} from '@mui/material';
+import Header from "./assets/components/Header";
+import Footer from "./assets/components/Footer";
 const App = () =>{
 
   return <>
-  <Box  display='flex' justifyContent='center' flexDirection='column' alignItems='center'>
-    <Data/>
-  </Box>
+  <Header/>
+    <Box width='100vw' display='flex' justifyContent='center' flexDirection='column' justifyItems='center' alignContent='center'>
+      <Data/>
+    </Box>
+  <Footer/>
   </>
 }
 

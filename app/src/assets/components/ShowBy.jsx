@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 const ShowBy = ({showBy, select}) =>{
    return <>
-            <Box mt={'60px'} mr={'20px'}>
+            <Box mt={'75px'} sx={{alignItems:{xs:'end', sm:'center'}}} mr={'20px'} width={'100vw'} display='flex' justifyContent='center' justifyItems='center'>
                <Select onChange={showBy} value={select} mt='70px'>
                   <MenuItem value="all">Todas</MenuItem>
                   <MenuItem value="completed">Completadas</MenuItem>

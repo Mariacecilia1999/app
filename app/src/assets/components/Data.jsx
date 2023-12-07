@@ -15,6 +15,7 @@ const Data = () =>{
    const [error, setError] = useState(false)
    const [textHelper, setHelper] = useState('')
    const [btn, setBtn] = useState(1)
+   const [stateHeight, setHeight] = useState(46)
 
    const capturingInput = (e) =>{
       setInput(e.target.value)
@@ -28,6 +29,8 @@ const Data = () =>{
       }else{
          setError(false)
          setHelper('')
+         setInput('')
+         setHeight(stateHeight + 12)
 
       }
       input != '' && setTasks([...tasks, {
@@ -63,6 +66,7 @@ const Data = () =>{
          return task
       })
       setTasks(allTask)
+      setInput('')
    }
 
    const completeTask = (id) =>{
@@ -93,7 +97,7 @@ const Data = () =>{
                <ShowBy select={select} showBy={showBy}/>
                <AddTask error={error} textHelper={textHelper} btn={btn} capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
             </Box>
-            <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
+            <ShowTask stateHeight={stateHeight} dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
          </>
 }
 
