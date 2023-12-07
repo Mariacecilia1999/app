@@ -2,6 +2,7 @@ import { useState } from "react"
 import AddTask from "./AddTask"
 import ShowTask from "./ShowTask"
 import ShowBy from "./ShowBy"
+import {Box} from '@mui/material';
 
 const Data = () =>{
 
@@ -10,12 +11,28 @@ const Data = () =>{
    const [edit, setEdit] = useState([])
    const [allDeleted, setAddDeleted]= useState([])
    const [allCompleted, setAllCompleted] = useState([])
+   const [select, setSelect] = useState('all')
+   const [error, setError] = useState(false)
+   const [textHelper, setHelper] = useState('')
+   const [btn, setBtn] = useState(1)
+   const [stateHeight, setHeight] = useState(46)
 
    const capturingInput = (e) =>{
       setInput(e.target.value)
    }
    
    const addInputTask = () =>{
+      setBtn(1)
+      if(input === ''){
+         setError(true)
+         setHelper('No se pueden agregar tareas vacias')
+      }else{
+         setError(false)
+         setHelper('')
+         setInput('')
+         setHeight(stateHeight + 12)
+
+      }
       input != '' && setTasks([...tasks, {
          id: Date.now(),
          name: input
@@ -32,6 +49,7 @@ const Data = () =>{
    }
 
    const editTask = (id) =>{
+      setBtn(2)
       const findEdit = tasks.find(task => task.id === id)
       setEdit(findEdit)
       console.log(findEdit.name)
@@ -39,6 +57,7 @@ const Data = () =>{
    }
 
    const confirmEditedTask = () =>{
+      setBtn(1)
       console.log(edit)
       const allTask = tasks.map((task) =>{
          if(task === edit){
@@ -47,6 +66,7 @@ const Data = () =>{
          return task
       })
       setTasks(allTask)
+      setInput('')
    }
 
    const completeTask = (id) =>{
@@ -56,15 +76,28 @@ const Data = () =>{
       setTasks(filterTasks)
    }
 
-   const showBy = (e) =>{
-      console.log(e.target.value)
-      {e.target.value === 'deleted' ? setTasks(allDeleted) :  e.target.value ===  'completed' ? setTasks(allCompleted) : setTasks([...allDeleted, ...allCompleted])}
-   }
+   const showBy = (e) => {
+      console.log(e.target.value);
+    
+      if (e.target.value === 'deleted') {
+        setSelect('deleted');
+        setTasks(allDeleted);
+      } else if (e.target.value === 'completed') {
+        setSelect('completed');
+        setTasks(allCompleted);
+      } else {
+        setSelect('all');
+        setTasks([...allDeleted, ...allCompleted]);
+      }
+    };
+    
 
    return <>
-            <ShowBy showBy={showBy}/>
-            <AddTask capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
-            <ShowTask dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
+            <Box sx={{width:{xs:'90vw', sm:'75vw'}, flexDirection:{xs:'column', sm:'row'}, alignItems:{xs:'end', sm:'center'}}} display='flex'>
+               <ShowBy select={select} showBy={showBy}/>
+               <AddTask error={error} textHelper={textHelper} btn={btn} capturingInput={capturingInput} addInputTask={addInputTask} input={input} confirmEditedTask={confirmEditedTask}/>
+            </Box>
+            <ShowTask stateHeight={stateHeight} dataTasks={tasks} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask}/>
          </>
 }
 
