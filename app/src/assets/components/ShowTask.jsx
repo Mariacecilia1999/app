@@ -4,11 +4,16 @@ import CheckIcon from '@mui/icons-material/Check';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-const ShowTask = ({dataTasks, deleteTask, editTask, completeTask, stateHeight}) =>{
+const ShowTask = ({dataTasks, deleteTask, editTask, completeTask, stateHeight, showTask}) =>{
  
 
    return(<>
-      <Box height={`${stateHeight}vh`} sx={{width:{xs:'90vw', sm:'100vw'}}}  display='flex' alignItems='center' justifyContent='center' flexDirection='column'>
+   <Box width={'100vw'}  display={'flex'} alignItems={'center'} justifyContent={'center'}> 
+   {dataTasks.length == 0 && <Box  display={'flex'} justifyContent={'center'} alignItems={'center'} alignContent={'center'}>
+                                 <Typography fontSize={'27px'}  variant='h3'>Sin tareas pendientes...</Typography>
+                            </Box>}
+   {showTask != 4 &&
+      <Box height={`${stateHeight}vh`}>
          {dataTasks.map((task)=>{
             return <Box sx={{width:{xs:'50vw', sm:'70vw'}}}  borderBottom='1px solid black' key={task.id} my='30px' display='flex' justifyContent={'space-around'}>
                <Typography width='14vw' variant='h5'>{task.name}</Typography>
@@ -19,6 +24,7 @@ const ShowTask = ({dataTasks, deleteTask, editTask, completeTask, stateHeight}) 
                </Box>
             </Box>
          })}
+      </Box>}
       </Box>
       </>)
    
