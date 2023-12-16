@@ -100,24 +100,16 @@ const Data = ({show}) =>{
       setTasks(filterTasks)
       setShowByTask(get('completed'))
    }
-
    const showBy = (e) => {
-      if(showTask === 2){
-         setSelect('completed')
-         setShowByTask(get('completed'))
-      }
-      setShowByTask(get('completed'))
       if (e.target.value === 'deleted') {
         setSelect('deleted')
-        if(get('delete')){
-        setShowByTask(get('delete'))
-        }
+        setShowByTask(allDeleted)
       } else if (e.target.value === 'completed') {
-            setShowByTask(get('completed'))
-            setSelect('completed')
-       
+        setSelect('completed')
+        setShowByTask(allCompleted)
       }
     }
+    
 
     const cancellEdit = () =>{
       setOpenEdit(0)
